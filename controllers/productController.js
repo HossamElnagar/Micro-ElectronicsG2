@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const User = require("../models/user");
 const createProduct = async (req, res) => {
     try {
 
@@ -8,10 +9,10 @@ const createProduct = async (req, res) => {
         if (!name || !price)
             return res.status(400).json({ msg: "missing required data" });
 
-        const user = await User.findById(userId);
-        if (user.role !== 'admin') {
-            return res.status(404).json({ msg: "User not found or not an admin" });
-        }
+     const user = await User.findById(userId);
+if (!user || user.role !== "admin") {
+    return res.status(403).json({ msg: "Only admin can create product" });
+}
 
         //user validate
        
