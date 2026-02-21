@@ -3,16 +3,19 @@ const Product = require("../models/Product");
 const createProduct = async (req, res) => {
     try {
 
-        const { name, quantity, price } = req.body;
+        const { name, quantity, price, userId } = req.body;
 
         // validation
         if (!name || !price)
             return res.status(400).json({ msg: "missing required data" });
 
-        //user validate
-        if (req.user.role !== 'admin') {
-        return res.status(403).json({ msg: "Access denied: Admins only" });
+        const user = await User.findById(userId);
+        if (user.role !== 'admin') {
+            return res.status(404).json({ msg: "User not found or not an admin" });
         }
+
+        //user validate
+       
         const product = await Product.create({
             name,
             quantity,
