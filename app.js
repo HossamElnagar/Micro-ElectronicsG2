@@ -34,8 +34,9 @@ const port = process.env.PORT || 3000;
 //routes
 
 const userRoutes = require("./routes/userRoutes");
-
+const productRoutes = require("./routes/productRoutes")
 app.use("/api",userRoutes);
+app.use("/api", productRoutes);
 
 //////////////////////////////////////////product
 

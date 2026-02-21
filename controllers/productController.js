@@ -1,5 +1,4 @@
 const Product = require("../models/Product");
-
 const createProduct = async (req, res) => {
     try {
 
@@ -57,7 +56,8 @@ const deleteProduct= async (req,res) => {
     
 }
 
-<<<<<<< HEAD
+
+
 const getAllProducts = async (req, res) => {
     try {
 
@@ -78,10 +78,7 @@ const getAllProducts = async (req, res) => {
 module.exports = {
     createProduct,
      getAllProducts
-=======
-module.exports = {
-    createProduct,
-    updateProduct,
-    deleteProduct
->>>>>>> f09b0f3807e9062dc02b64581ec180b6eaaaba7f
+     ,deleteProduct,
+
+     updateProduct
 };
